@@ -1,9 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, KeyboardEvent, ChangeEvent } from "react";
 
-const Comment = ({ comment, addReply }: any) => {
+interface CommentType {
+  id: number;
+  display: string;
+  children: CommentType[];
+}
+
+interface CommentProps {
+  comment: CommentType;
+  addReply: (commentId: number, replyText: string) => void;
+}
+
+const Comment = ({ comment, addReply }: CommentProps) => {
   const [showReplyBox, setShowReplyBox] = useState(false);
   const [replyText, setReplyText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
   const handleReply = () => {
     setShowReplyBox(true);
     setTimeout(() => {
@@ -16,13 +28,13 @@ const Comment = ({ comment, addReply }: any) => {
     setReplyText("");
   };
 
-  const handleSaveReply = (commentId: any) => {
+  const handleSaveReply = (commentId: number) => {
     addReply(commentId, replyText);
     setShowReplyBox(false);
     setReplyText("");
   };
 
-  const handleKeyDown = (e: any, commentId: number) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, commentId: number) => {
     if (e.key === "Enter") {
       handleSaveReply(commentId);
     } else if (e.key === "Escape") {
@@ -50,7 +62,7 @@ const Comment = ({ comment, addReply }: any) => {
             value={replyText}
             className=" border border-black "
             ref={inputRef}
-            onChange={(e: any) => setReplyText(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setReplyText(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e, comment.id)}
           />
 
@@ -72,7 +84,7 @@ const Comment = ({ comment, addReply }: any) => {
       ) : null}
       {comment.children.length ? (
         <ul>
-          {comment.children.map((item: any) => (
+          {comment.children.map((item: CommentType) => (
             <Comment key={item.id} comment={item} addReply={addReply} />
           ))}
         </ul>

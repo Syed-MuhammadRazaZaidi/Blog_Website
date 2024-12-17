@@ -3,15 +3,21 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
 
+interface CommentType {
+  id: number;
+  display: string;
+  children: CommentType[];
+}
+
 const CommentsSection = () => {
   const [input, setInput] = useState("");
-  const [comments, setComments]: any = useState([]);
+  const [comments, setComments] = useState<CommentType[]>([]);
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const newComment = (text: any) => {
+  const newComment = (text: string): CommentType => {
     return {
       id: new Date().getTime(),
       display: text,
@@ -19,32 +25,29 @@ const CommentsSection = () => {
     };
   };
 
-  const handleNewComment = () => {      // e:any
+  const handleNewComment = () => {
     if (input) {
       setComments([...comments, newComment(input)]);
       setInput("");
     }
   };
 
-  const addReply = (parentId: any, text: any) => {
+  const addReply = (parentId: number, text: string) => {
     const copyComments = [...comments];
     addComments(copyComments, parentId, text);
   };
 
-  const addComments = (comments: any, parentId: any, text: any) => {
-
+  const addComments = (comments: CommentType[], parentId: number, text: string) => {
     const parentComment = comments.find(
-      (comment: any) => comment.id === parentId
+      (comment: CommentType) => comment.id === parentId
     );
-
-   
+    
     if (parentComment) {
-   
       parentComment.children.unshift(newComment(text));
       return;
     }
 
-    comments.forEach((comment: any) =>
+    comments.forEach((comment: CommentType) =>
       addComments(comment.children, parentId, text)
     );
   };
@@ -73,7 +76,7 @@ const CommentsSection = () => {
       </div>
   
       <div className="mt-10">
-        {comments.map((item: any) => (
+        {comments.map((item: CommentType) => (
           <Comment key={item.id} comment={item} addReply={addReply} />
         ))}
       </div>

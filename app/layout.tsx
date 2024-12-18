@@ -6,30 +6,25 @@ import Footer from "@/components/footer";
 
 export default function RootLayout({
   children,
-  pageProps,
 }: Readonly<{
   children: React.ReactNode;
-  pageProps: object;
 }>) {
   return (
-    <ClerkProvider
-      {...pageProps}
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    >
-      <html lang="en" className="scroll-p-20 scroll-smooth">
-        <body>
-          <ThemeProvider
+      <ClerkProvider publishableKey={'pk_test_b3B0aW1hbC1ob3JuZXQtNTkuY2xlcmsuYWNjb3VudHMuZGV2JA'}> 
+    <html lang="en" className="scroll-p-20 scroll-smooth">
+      <body>
+      <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
-            <Navbar />
-            {children}
-          </ThemeProvider>
-          <Footer />
+            >
+        <Navbar/>
+        {children}
+        </ThemeProvider>
+        <Footer/>
         </body>
-      </html>
-    </ClerkProvider>
+    </html>
+        </ClerkProvider>
   );
 }

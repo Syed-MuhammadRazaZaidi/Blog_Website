@@ -19,7 +19,7 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // const slug = (await params).slug;
+  const slug = (await params).slug;
 
   const filepath = `content/${(await params).slug}.md`;
 

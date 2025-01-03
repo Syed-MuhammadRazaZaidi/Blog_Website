@@ -12,10 +12,10 @@ export default function RootLayout({
   pageProps: object;
 }) {
   return (
-    <ClerkProvider
-      {...pageProps}
-      publishableKey={'pk_test_b3B0aW1hbC1ob3JuZXQtNTkuY2xlcmsuYWNjb3VudHMuZGV2JA'}
-    >
+    // <ClerkProvider
+    //   {...pageProps}
+    //   publishableKey={'pk_test_b3B0aW1hbC1ob3JuZXQtNTkuY2xlcmsuYWNjb3VudHMuZGV2JA'}
+    // >
       <html lang="en" className="scroll-p-20 scroll-smooth">
         <body>
           <ThemeProvider
@@ -30,6 +30,6 @@ export default function RootLayout({
           <Footer />
         </body>
       </html>
-    </ClerkProvider>
+    // </ClerkProvider>
   );
 }

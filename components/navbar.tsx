@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "./theme-btn";
+import LoggedInUser from "./loggedInUser";
 
 const Navbar = () => {
   return (
@@ -47,6 +48,7 @@ const Navbar = () => {
             </Link>
             <div className="flex items-center justify-center gap-4">
               <ModeToggle />
+              <LoggedInUser/>
             </div>
           </div>
 

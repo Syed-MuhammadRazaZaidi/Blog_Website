@@ -19,11 +19,13 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // const slug = (await params).slug;
+  const slug = (await params).slug;
+  const filepath = `content/${slug}.md`;
 
-  const filepath = `content/${(await params).slug}.md`;
+  console.log("Attempting to read file:", filepath);
 
   if (!fs.existsSync(filepath)) {
+    console.error("File not found:", filepath);
     notFound();
     return;
   }

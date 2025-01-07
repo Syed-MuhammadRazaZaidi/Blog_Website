@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "./theme-btn";
+import LoggedInUser from "./loggedInUser";
 
 const Navbar = () => {
   return (

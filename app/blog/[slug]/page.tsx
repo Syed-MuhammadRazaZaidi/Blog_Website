@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import rehypeDocument from "rehype-document";
@@ -20,7 +21,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const filepath = `content/${slug}.md`;
+  const filepath = path.join(process.cwd(), "content", `${slug}.md`);
 
   console.log("Attempting to read file:", filepath);
 

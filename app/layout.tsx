@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "../components/Navbar";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ClerkProvider } from '@clerk/nextjs'

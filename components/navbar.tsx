@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -52,7 +51,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex gap-2 items-center justify-center">
             <Sheet>
               <span className="mx-2">
                 <ModeToggle />
@@ -73,6 +72,7 @@ const Navbar = () => {
                   ></path>
                 </svg>
               </SheetTrigger>
+              <LoggedInUser/>
               <SheetContent>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-start ml-20 my-4">
@@ -84,10 +84,6 @@ const Navbar = () => {
                       <Link href="/about">About</Link>
                       <Link href="/blog">Blog</Link>
                       <Link href="/contact">Contact</Link>
-                      <div>
-                        <Button>Log In</Button>
-                        <Button className="ml-5">Sign Up</Button>
-                      </div>
                     </div>
                   </SheetDescription>
                 </SheetHeader>

@@ -1,8 +1,9 @@
-import Navbar from "../components/Navbar";
+
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ClerkProvider } from '@clerk/nextjs'
 import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 
 export default function RootLayout({
   children,

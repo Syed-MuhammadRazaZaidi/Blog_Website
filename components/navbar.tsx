@@ -82,7 +82,7 @@ const Navbar = () => {
                     <div className="flex flex-col items-start text-center gap-10 ml-20">
                       <Link href="/">Home</Link>
                       <Link href="/about">About</Link>
-                      <Link href="/blog">Blog</Link>
+                      <Link href="blogs">Blogs</Link>
                       <Link href="/contact">Contact</Link>
                     </div>
                   </SheetDescription>
